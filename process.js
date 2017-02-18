@@ -1,13 +1,33 @@
 //Install Node
 //Install Inquire
 //Require Inquire
-	//var inquire = require ("inquirer")
+	var inquire = require ("inquirer")
 //Require Cloze.js 
-	//var inquire = require ("cloze.js")
+	var cloze = require ("./cloze.js")
 //Require Basic.js
-	//var inquire = require ("cloze.js")
+	var basic = require ("./basic.js")
 // Two Choices: Add or Review
-	//Would You Like To Add or Review? 
+	//Would You Like To Add or Review?
+	// inquire.prompt([
+	// 	{
+	// 	  type: "list",
+	// 	  message: "Would You Like To Add or Review?",
+	// 	  choices: ["Add", "Review"],
+	// 	  name: "addOrReview"
+	// 	},
+	// ]).then(function(user){
+	// 	console.log(JSON.stringify(user, null, 2));
+	// 	if(user.addOrReview==="Add"){
+	// 		inquire.prompt([
+	// 			{
+	// 			  type: "list",
+	// 			  message: "What Type Of Card Would You Like To Add?",
+	// 			  choices: ["Basic", "Cloze"],
+	// 			  name: "BasicOrCloze"	
+	// 			}
+	// 		])
+	// 	}
+	// });
 //If Add: Ask Basic or Cloze? (inquire)//write file
 	//What type of flashcard would you like to add? Basic Close?
 		//Front? Input

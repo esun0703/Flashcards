@@ -1,6 +1,7 @@
 "use strict";
 const inquire = require("inquirer")
 const processJS = require("./process.js");
+const fs = require("fs");
 // var question = processJS.
 function BasicCard (front, back) {//added capitalization in "basic"
 	if(!(this instanceof BasicCard)) {
@@ -8,10 +9,22 @@ function BasicCard (front, back) {//added capitalization in "basic"
 	}
 	this.front=front;
 	this.back=back;
+	saveCard(this.front, this.back);
 	// console.log (this);
-}
+};
 
-//Need Promises
+function saveCard (front, back){
+	fs.appendFile('flashcards.txt', "\n\ " + front + ", " + back, 'utf8', function(error) {
+		console.log(front, back);
+        if (error) {
+            log('error' + error);
+        }
+	});
+};
+
+
+
+//Need Promises For This To Work.
 // BasicCard.prototype.readCard = function (){ 
 // 	inquire.prompt([
 // 		{
@@ -44,8 +57,8 @@ BasicCard.prototype.readCard= function (){
 
 var newCard = new BasicCard ("Who was the first president of the united states?", "George Washington")
 
-newCard.readCard();
-// newCard.readBack()
+// newCard.readCard();
+
 
 
 
