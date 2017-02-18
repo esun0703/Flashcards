@@ -1,21 +1,21 @@
 "use strict";
 const inquire = require("inquirer")
-const processJS = require("./process.js");
+const processJS = require("./basicProcess.js");
 const fs = require("fs");
 // var question = processJS.
-function BasicCard (front, back) {//added capitalization in "basic"
+function BasicCard (basicFront, basicBack) {//added capitalization in "basic"
 	if(!(this instanceof BasicCard)) {
-		return new BasicCard (front, back)
+		return new BasicCard (basicFront, basicBack)
 	}
-	this.front=front;
-	this.back=back;
-	saveBasicCard(this.front, this.back);
+	this.basicFront=basicFront;
+	this.basicBack=basicBack;
+	saveBasicCard(this.basicFront, this.basicBack);
 	// console.log (this);
 };
 
-function saveBasicCard (front, back){
-	fs.appendFile('flashcards.txt', "\n\ [ " + front +  "," +  back + "]", 'utf8', function(error) {
-		console.log(front, back);
+function saveBasicCard (saveBasicFront, saveBasicBack){
+	fs.appendFile('flashcards.txt', "\n\ [ " + saveBasicFront +  "," +  saveBasicBack + "]", 'utf8', function(error) {
+		console.log("saved new basic card")
         if (error) {
             log('error' + error);
         }

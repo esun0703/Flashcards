@@ -8,14 +8,21 @@ var newAction = process.argv[2] //node basicProcess.js add/review
 
 
 if (newAction === "add") {
-	var newCardType = process.argv [3] //node basicProcess.js add/review basic/cloze 
-	var newQuestion = process.argv [4] //node basicProcess.js add/review basic/cloze "question?"
-	var newAnswer = process.argv [5] //node basicProcess.js add/review basic/cloze "answer"
-	if (newCardType==="basic"){
-		basic.BasicCard(newQuestion, newAnswer);
-	} else if (newCardType==="cloze"){
-		cloze.ClozeCard(newQuestion, newAnswer);
+	var cardType = process.argv [3] //node basicProcess.js add/review basic/cloze 
+	var question = process.argv [4] //node basicProcess.js add/review basic/cloze "question?"
+	var answer = process.argv [5] //node basicProcess.js add/review basic/cloze "answer"
+	if (cardType==="basic"){
+		basic.BasicCard(question, answer);
+	} else if (cardType==="cloze"){
+		cloze.ClozeCard(question, answer);
 	}
 } else if (newAction === "review") {
 	//read file
+	if (cardType==="basic"){
+		console.log("review basic");
+		//for loop
+	} else if (cardType = "cloze") {
+		console.log("review cloze")
+	}
+
 }
