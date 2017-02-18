@@ -9,12 +9,12 @@ function BasicCard (front, back) {//added capitalization in "basic"
 	}
 	this.front=front;
 	this.back=back;
-	saveCard(this.front, this.back);
+	saveBasicCard(this.front, this.back);
 	// console.log (this);
 };
 
-function saveCard (front, back){
-	fs.appendFile('flashcards.txt', "\n\ " + front + ", " + back, 'utf8', function(error) {
+function saveBasicCard (front, back){
+	fs.appendFile('flashcards.txt', "\n\ [ " + front +  "," +  back + "]", 'utf8', function(error) {
 		console.log(front, back);
         if (error) {
             log('error' + error);
@@ -43,10 +43,10 @@ function saveCard (front, back){
 // };
 // newCard.readCard();
 
-BasicCard.prototype.readCard= function (){
-	console.log(this.front);
-	console.log(this.back);
-}
+// BasicCard.prototype.readCard= function (){
+// 	console.log(this.front);
+// 	console.log(this.back);
+// }
 
 // BasicCard.prototype.readBack = function(){
 // 	setTimeout(function(){
@@ -55,7 +55,7 @@ BasicCard.prototype.readCard= function (){
 // }
 
 
-var newCard = new BasicCard ("Who was the first president of the united states?", "George Washington")
+var newBasicCard = new BasicCard ("Who was the first president of the united states?", "George Washington")
 
 // newCard.readCard();
 
