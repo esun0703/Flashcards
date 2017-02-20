@@ -7,13 +7,17 @@ function ClozeCard (clozeFront, clozeBack) {//added capitalization in "basic"
 	if(!(this instanceof ClozeCard)) {
 		return new ClozeCard (clozeFront, clozeBack)
 	}
+	//saves the clozeFront and the clozeBack from the construction
 	this.clozeFront=clozeFront;
 	this.clozeBack=clozeBack;
-	saveClozeCard(this.clozeFront, this.clozeBack);
+	//replaces the "this.clozeBack" part of the "this.clozeFront" string as "..."
+	var saveClozeFront=this.clozeFront.replace(clozeBack, "...")
+	saveClozeCard(saveClozeFront, this.clozeBack);
 	// console.log (this);
 
 };
 
+//Saves the individual card to clozeflashcards.txt
 function saveClozeCard (saveClozeFront, saveClozeBack){
 	fs.appendFile('clozeflashcards.txt', "\n\ [ " + saveClozeFront +  "," +  saveClozeBack + "]", 'utf8', function(error) {
 		console.log(saveClozeFront, saveClozeBack);
@@ -28,5 +32,5 @@ function saveClozeCard (saveClozeFront, saveClozeBack){
 // 	console.log(this.back);
 // }
 
-var newClozeCard = new ClozeCard ("Who Sang Wrecking Ball", "Miley Cyrus");
+var newClozeCard = new ClozeCard ("Miley Cyrus Sang Wrecking Ball", "Miley Cyrus");
 // module.exports = ClozeCard;
