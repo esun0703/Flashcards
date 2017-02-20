@@ -3,7 +3,7 @@ const inquire = require("inquirer")
 const processJS = require("./basicProcess.js");
 const fs = require("fs");
 // var question = processJS.
-function BasicCard (basicFront, basicBack) {//added capitalization in "basic"
+var BasicCard = function (basicFront, basicBack) {//added capitalization in "basic"
 	if(!(this instanceof BasicCard)) {
 		return new BasicCard (basicFront, basicBack)
 	}
@@ -13,9 +13,11 @@ function BasicCard (basicFront, basicBack) {//added capitalization in "basic"
 	// console.log (this);
 };
 
+module.exports = BasicCard;
+
 function saveBasicCard (saveBasicFront, saveBasicBack){
-	fs.appendFile('flashcards.txt', "\n\ [ " + saveBasicFront +  "," +  saveBasicBack + "]", 'utf8', function(error) {
-		console.log("saved new basic card")
+	fs.appendFile('flashcards.txt', "\n\ ' " + saveBasicFront +  "," +  saveBasicBack + "'", 'utf8', function(error) {
+		console.log("saved new basic card");
         if (error) {
             log('error' + error);
         }
