@@ -9,7 +9,7 @@ const question = process.argv[3];
 const answer = process.argv[4];
 
 
-//======================================================================================
+//...This can be taken out once I figure out inquirer in basicProcess.js======================================================================================
 if (addOrReview === "add") {
 	var newClozeCard = new ClozeCard (question, answer);
 	console.log (newClozeCard);
@@ -17,8 +17,9 @@ if (addOrReview === "add") {
  	fs.readFile("clozeflashcards.txt", "utf8", function(err, data){
 		var dataArr=data.split(",");//can use to separate by "," "/n", just what you want to split at
 		for(let i=0; i<dataArr.length; i++){
-			console.log(dataArr[i].trim())
+			console.log(dataArr[i].trim());
 		}
+
 	})
 }
 
@@ -38,7 +39,6 @@ function ClozeCard (clozeFront, clozeBack) {//added capitalization in "basic"
 	// console.log (this);
 
 };
-
 
 //======================================================================================
 //Saves the individual card to clozeflashcards.txt

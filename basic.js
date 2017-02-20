@@ -8,7 +8,7 @@ const question = process.argv[3];
 const answer = process.argv[4];
 
 
-//======================================================================================
+//...This can be taken out once I figure out inquirer in basicProcess.js======================================================================================
 if (addOrReview === "add") {
 	var newBasicCard = new BasicCard (question, answer)
 	console.log (newBasicCard);
