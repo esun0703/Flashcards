@@ -1,9 +1,28 @@
 "use strict";
 const inquire = require("inquirer")
-const processJS = require("./basicProcess.js");
 const fs = require("fs");
 // var question = processJS.
-var BasicCard = function (basicFront, basicBack) {//added capitalization in "basic"
+
+const addOrReview = process.argv [2];
+const question = process.argv[3];
+const answer = process.argv[4];
+
+
+//======================================================================================
+if (addOrReview === "add") {
+	var newBasicCard = new BasicCard (question, answer)
+	console.log (newBasicCard);
+} else if (addOrReview === "review") {
+ 	fs.readFile("clozeflashcards.txt", "utf8", function(err, data){
+		var dataArr=data.split(",");//can use to separate by "," "/n", just what you want to split at
+		for(let i=0; i<dataArr.length; i++){
+			console.log(dataArr[i].trim())
+		}
+	})
+};
+
+//================================================================================================
+function BasicCard (basicFront, basicBack) {//added capitalization in "basic"
 	if(!(this instanceof BasicCard)) {
 		return new BasicCard (basicFront, basicBack)
 	}
@@ -12,8 +31,6 @@ var BasicCard = function (basicFront, basicBack) {//added capitalization in "bas
 	saveBasicCard(this.basicFront, this.basicBack);
 	// console.log (this);
 };
-
-module.exports = BasicCard;
 
 function saveBasicCard (saveBasicFront, saveBasicBack){
 	fs.appendFile('flashcards.txt', "\n\ ' " + saveBasicFront +  "," +  saveBasicBack + "'", 'utf8', function(error) {
@@ -24,42 +41,6 @@ function saveBasicCard (saveBasicFront, saveBasicBack){
 	});
 };
 
-
-
-//Need Promises For This To Work.
-// BasicCard.prototype.readCard = function (){ 
-// 	inquire.prompt([
-// 		{
-// 		  type: "input",
-// 		  message: this.front,
-// 		  name: "answerQuestion"
-// 		},
-// 	]).then(function(card){
-// 		console.log(JSON.stringify(user, null, 2));
-// 		if(card.answerQuestion===this.back){
-// 			console.log("correct! The Answer Is Indeed " + this.back);
-// 		} else {
-// 			console.log("sorry! The Answer Is " + this.back)
-// 		};
-// 	});
-// };
-// newCard.readCard();
-
-// BasicCard.prototype.readCard= function (){
-// 	console.log(this.front);
-// 	console.log(this.back);
-// }
-
-// BasicCard.prototype.readBack = function(){
-// 	setTimeout(function(){
-// 		console.log(this.back);
-// 	},2000)
-// }
-
-
-var newBasicCard = new BasicCard ("Who was the first president of the united states?", "George Washington")
-
-// newCard.readCard();
 
 
 
