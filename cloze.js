@@ -11,16 +11,17 @@ function ClozeCard (clozeFront, clozeBack) {//added capitalization in "basic"
 	this.clozeFront=clozeFront;
 	this.clozeBack=clozeBack;
 	//replaces the "this.clozeBack" part of the "this.clozeFront" string as "..."
-	var saveClozeFront=this.clozeFront.replace(clozeBack, "...")
-	saveClozeCard(saveClozeFront, this.clozeBack);
+	var saveClozeFront=this.clozeFront.replace(clozeBack, "...");
+	var saveClozeBack=this.clozeBack;
+	saveClozeCard(saveClozeFront, saveClozeBack);
 	// console.log (this);
 
 };
 
 //Saves the individual card to clozeflashcards.txt
 function saveClozeCard (saveClozeFront, saveClozeBack){
-	fs.appendFile('clozeflashcards.txt', "\n\ [ " + saveClozeFront +  "," +  saveClozeBack + "]", 'utf8', function(error) {
-		console.log(saveClozeFront, saveClozeBack);
+	fs.appendFile('clozeflashcards.txt', "\n\ [ " + saveClozeFront +  ", " +  saveClozeBack + "]", 'utf8', function(error) {
+		// console.log("Question: '" + saveClozeFront + "', Answer: " + saveClozeBack);
         if (error) {
             log('error' + error);
         }

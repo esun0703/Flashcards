@@ -3,6 +3,8 @@
 var cloze = require ("./cloze.js")
 //Require Basic.js
 var basic = require ("./basic.js")
+var fs = require ("fs")
+
 
 var newAction = process.argv[2] //node basicProcess.js add/review 
 
@@ -20,7 +22,15 @@ if (newAction === "add") {
 	//read file
 	if (cardType==="basic"){
 		console.log("review basic");
-		//for loop
+		fs.readFile("flashcards.txt", "utf8", function(err, data){//usually always use utf8, sometimes utf16
+			//print contnets of data
+			console.log(data);
+			//split information by commas
+			var dataArr = data.split(",")
+			//redisplay the content as an array for later use.
+			console.log(dataArr);
+
+		})
 	} else if (cardType = "cloze") {
 		console.log("review cloze")
 	}
